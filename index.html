@@ -1,4 +1,19 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+
+    <title>Rock, Paper, Scissor</title>
+
+<style>
+    body {
+        background-color: aquamarine;
+        font-family: Arial, Helvetica, sans-serif;
+        color: blue;
+        }
+</style>
+
+</head>
 
 <body>
 
@@ -7,19 +22,31 @@
 </body>
 
 <script>
-
+  
+    function playerChoice() {
+        let playerSelection = prompt("Rock, paper or scissors?");
+        return playerSelection.toLowerCase();
+    }
+        
     function computerPlay() {
 		const RPS = ['Rock', 'Paper', 'Scissors'];
-		let RPSresult = RPS[Math.floor(Math.random()*RPS.length)];   
+		let computerSelection = RPS[Math.floor(Math.random()*RPS.length)];   
+        return computerSelection;
     }   
 	
-	let playerSelection = prompt("Rock, paper or scissors?");
-    
-    function singleRound() {
-        let playerSelection = playerSelection;
-        let computerSelection = computerPlay();
-        if (computerSelection = "Paper") {alert("You lost");}
-        else {alert("You've won");}
+    function singleRound(playerSelection, computerSelection) {
+        playerSelection = playerChoice();
+        computerSelection = computerPlay();
+        if ((computerSelection === "Paper") && (playerSelection === "rock")) {alert("The computer chose paper, you lost");}
+        else if((computerSelection === "Paper") && (playerSelection === "paper")) {alert("The computer chose paper, it's tie");}
+        else if((computerSelection === "Paper") && (playerSelection === "scissors")) {alert("The computer chose paper, you've won");}
+        else if((computerSelection === "Rock") && (playerSelection === "rock")) {alert("The computer chose rock, it's a tie");}
+        else if((computerSelection === "Rock") && (playerSelection === "paper")) {alert("The computer chose rock, you've won");}
+        else if((computerSelection === "Rock") && (playerSelection === "scissors")) {alert("The computer chose rock, you've lost");}
+        else if((computerSelection === "Scissors") && (playerSelection === "rock")) {alert("The computer chose scissors, you've won");}
+        else if((computerSelection === "Scissors") && (playerSelection === "paper")) {alert("The computer chose scissors, you've lost");}
+        else if((computerSelection === "Scissors") && (playerSelection === "scissors")) {alert("The computer chose scissors, it's a tie");}
+        else {alert("You didn't enter a valid choice");}
 
     }
     singleRound();
