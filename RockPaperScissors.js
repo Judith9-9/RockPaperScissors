@@ -5,13 +5,8 @@
     return playerSelection.toLowerCase();
 }
 */
-let playerChoice;
-//if () {};
+let playerChoice; 
 
-document.getElementById("rockChoice").addEventListener("click", function(){
-    document.getElementById("test").innerHTML = "Rock";
-})
-    
 function computerPlay() {
     const RPS = ['Rock', 'Paper', 'Scissors'];
     let computerSelection = RPS[Math.floor(Math.random()*RPS.length)];   
@@ -19,20 +14,46 @@ function computerPlay() {
 }   
 
 function singleRound(playerSelection, computerSelection) {
-    playerSelection = playerChoice();
+    playerSelection = playerChoice;
     computerSelection = computerPlay();
-    if ((computerSelection === "Paper") && (playerSelection === "rock")) {console.log("The computer chose paper, you lost"); return -1;}
-    else if((computerSelection === "Paper") && (playerSelection === "paper")) {console.log("The computer chose paper, it's tie"); return 0;}
-    else if((computerSelection === "Paper") && (playerSelection === "scissors")) {console.log("The computer chose paper, you've won"); return 1;}
-    else if((computerSelection === "Rock") && (playerSelection === "rock")) {console.log("The computer chose rock, it's a tie"); return 0;}
-    else if((computerSelection === "Rock") && (playerSelection === "paper")) {console.log("The computer chose rock, you've won"); return 1;}
-    else if((computerSelection === "Rock") && (playerSelection === "scissors")) {console.log("The computer chose rock, you've lost"); return -1;}
-    else if((computerSelection === "Scissors") && (playerSelection === "rock")) {console.log("The computer chose scissors, you've won"); return 1;}
-    else if((computerSelection === "Scissors") && (playerSelection === "paper")) {console.log("The computer chose scissors, you've lost"); return -1;}
-    else if((computerSelection === "Scissors") && (playerSelection === "scissors")) {console.log("The computer chose scissors, it's a tie"); return 0;}
-    else {console.log("Enter a valid choice"); return 0;};
-
+    if ((computerSelection === "Paper") && (playerSelection === "rock")) 
+        {document.getElementById("result").innerHTML = "The computer chose paper, you lost"; return -1;}
+    else if((computerSelection === "Paper") && (playerSelection === "paper")) 
+        {document.getElementById("result").innerHTML = "The computer chose paper, it's tie"; return 0;}
+    else if((computerSelection === "Paper") && (playerSelection === "scissors")) 
+        {document.getElementById("result").innerHTML = "The computer chose paper, you've won"; return 1;}
+    else if((computerSelection === "Rock") && (playerSelection === "rock")) 
+        {document.getElementById("result").innerHTML = "The computer chose rock, it's a tie"; return 0;}
+    else if((computerSelection === "Rock") && (playerSelection === "paper")) 
+        {document.getElementById("result").innerHTML = "The computer chose rock, you've won"; return 1;}
+    else if((computerSelection === "Rock") && (playerSelection === "scissors")) 
+        {document.getElementById("result").innerHTML = "The computer chose rock, you've lost"; return -1;}
+    else if((computerSelection === "Scissors") && (playerSelection === "rock")) 
+        {document.getElementById("result").innerHTML = "The computer chose scissors, you've won"; return 1;}
+    else if((computerSelection === "Scissors") && (playerSelection === "paper")) 
+        {document.getElementById("result").innerHTML = "The computer chose scissors, you've lost"; return -1;}
+    else if((computerSelection === "Scissors") && (playerSelection === "scissors")) 
+        {document.getElementById("result").innerHTML = "The computer chose scissors, it's a tie"; return 0;}
+    else 
+        {document.getElementById("result").innerHTML = "Enter a valid choice"; return 0;};
 }
+
+document.getElementById("rockChoice").addEventListener("click", function(){
+    playerChoice = "rock";
+    singleRound();
+})
+document.getElementById("paperChoice").addEventListener("click", function(){
+    playerChoice = "paper";
+    singleRound();
+})
+
+document.getElementById("scissorsChoice").addEventListener("click", function(){
+    playerChoice = "scissors";
+    singleRound();
+})
+
+
+
 // I have remoded the 5 round mechanisme as instructed by TOP
 /*function game() {
     let result1 = singleRound();
